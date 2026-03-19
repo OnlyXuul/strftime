@@ -7,7 +7,7 @@
 4. On success: a string slice view of provided buffer up to the last index written to and boolean true. i.e. The returned string length only reflects the data written to the buffer and not the entire buffer length.
 5. The buffer is not zeroed by strftime, and may contain more data from subsequent re-uses beyond the last index the returned string slice is using.
 6. Region format specifiers, like UTC Offset, timezone, etc, will be quietly ignored if not availible.
-7. Timestamp specifiers will always return a string of the same length, respectively. One exception: In the case of %s and %-s only, offset is replaced with Z if not applicable. In the case of using %z or %-z, offset is quietly ignored if not availible.
+7. Timestamp specifiers will always return a string of the same length, respectively. Exceptions: In the case of %s and %-s only, offset is replaced with Z if not applicable. In the case of using %z or %-z, offset is quietly ignored if not availible.
 
 ## Steps Linux
 1. Clone strftime into odin/shared folder:
