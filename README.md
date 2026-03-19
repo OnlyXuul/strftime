@@ -20,7 +20,7 @@
    cd $(odin root)shared/strftime/examples
    odin run .
    ```
-## Steps Powershell
+## Steps Windows Powershell
 1. Clone strftime into odin/shared folder:
    ```bash
    cd $(odin root)
