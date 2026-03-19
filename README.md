@@ -5,7 +5,7 @@
 2. General error: An empty string is returned with boolean of false.
 3. Buffer over-run error: An empty string is returned with boolean of false. The contents of the provided buffer will still contain all data wrtitten to the buffer up until the point the buffer max was reached.
 4. Region format specifiers, like UTC Offset, timezone, etc, will be quietly ignored if not availible.
-5. Timestamp specifiers will always return a string of the same length, respectively. One exception: offset is replaced with Z if not applicable.
+5. Timestamp specifiers will always return a string of the same length, respectively. One exception: In the case of %s and %-s only, offset is replaced with Z if not applicable. In the case of using %z or %-z, offset is quietly ignored if not availible.
 
 ## Steps
 1. Clone strftime into odin/shared folder:
