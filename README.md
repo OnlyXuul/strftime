@@ -9,20 +9,33 @@
 6. Region format specifiers, like UTC Offset, timezone, etc, will be quietly ignored if not availible.
 7. Timestamp specifiers will always return a string of the same length, respectively. One exception: In the case of %s and %-s only, offset is replaced with Z if not applicable. In the case of using %z or %-z, offset is quietly ignored if not availible.
 
-## Steps
+## Steps Linux
 1. Clone strftime into odin/shared folder:
    ```bash
    cd $(odin root)shared
    git clone https://github.com/OnlyXuul/strftime.git
    ```
-2. To use the library, add to the top of your project file:
-   ```odin
-   import sft "shared:strftime"
-   ```
-3. To run usage examples:
+2. To run usage examples:
    ```bash
    cd $(odin root)shared/strftime/examples
    odin run .
+   ```
+## Steps Powershell
+1. Clone strftime into odin/shared folder:
+   ```bash
+   cd $(odin root)
+   cd shared
+   git clone https://github.com/OnlyXuul/strftime.git
+   ```
+2. To run usage examples:
+   ```bash
+   cd $(odin root)
+   cd shared\strftime\examples
+   odin run .
+   ```
+To use the library, add to the top of your project file:
+   ```odin
+   import sft "shared:strftime"
    ```
 ## Supported Format Specifiers
 ** Special **
