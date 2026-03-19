@@ -17,7 +17,7 @@
    ```
 2. To use the library, add to the top of your project file:
    ```odin
-   import "shared:strftime"
+   import sft "shared:strftime"
    ```
 3. To run usage examples:
    ```bash
