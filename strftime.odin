@@ -134,6 +134,8 @@ strftime :: proc {strftime_time, strftime_datetime, strftime_local, strftime_reg
 
 Example:
 
+	import sft "shared:strftime"
+
 	tz, tz_ok := timezone.region_load("local", context.allocator)
 	defer timezone.region_destroy(tz)
 
@@ -155,6 +157,8 @@ strftime_region :: proc(buf: []byte, format: string, tz: ^datetime.TZ_Region) ->
 
 Example:
 
+	import sft "shared:strftime"
+
 	buf: [64]byte
 	tm, tm_ok := sft.strftime(buf[:], "%A %B %Y-%m-%d %I:%M:%S %P")
 	fmt.println(tm)
@@ -175,6 +179,8 @@ strftime_local :: proc(buf: []byte, format: string) -> (time_string: string, ok:
 
 Example:
 
+	import sft "shared:strftime"
+
 	buf: [64]byte
 	now := time.time_add(time.now(), -5 * time.Hour)
 	tm, tm_ok := sft.strftime(buf[:], "%A %B %Y-%m-%d %I:%M:%S %P", now)
@@ -193,6 +199,8 @@ strftime_time :: proc(buf: []byte, format: string, t: time.Time) -> (time_string
 - Example gets present time
 
 Example:
+
+	import sft "shared:strftime"
 
 	tz, tz_ok := timezone.region_load("local", context.allocator)
 	defer timezone.region_destroy(tz)
