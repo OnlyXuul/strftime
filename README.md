@@ -4,8 +4,10 @@
 1. First and foremost: Error state is defined and not undefined as is the case with C versions of strftime. This version of strftime should never crash a program if time formatting fails. If it does, it is conciderred a bug. Please report these bugs as priority.
 2. General error: An empty string is returned with boolean of false.
 3. Buffer over-run error: An empty string is returned with boolean of false. The contents of the provided buffer will still contain all data wrtitten to the buffer up until the point the buffer max was reached.
-4. Region format specifiers, like UTC Offset, timezone, etc, will be quietly ignored if not availible.
-5. Timestamp specifiers will always return a string of the same length, respectively. One exception: In the case of %s and %-s only, offset is replaced with Z if not applicable. In the case of using %z or %-z, offset is quietly ignored if not availible.
+4. On success: a string slice view of provided buffer up to the last index written to and boolean true. i.e. The returned string length only reflects the data written to the buffer and not the entire buffer length.
+5. The buffer is not zeroed by strftime, and may contain more data from subsequent re-uses beyond the last index the returned string slice is using.
+6. Region format specifiers, like UTC Offset, timezone, etc, will be quietly ignored if not availible.
+7. Timestamp specifiers will always return a string of the same length, respectively. One exception: In the case of %s and %-s only, offset is replaced with Z if not applicable. In the case of using %z or %-z, offset is quietly ignored if not availible.
 
 ## Steps
 1. Clone strftime into odin/shared folder:
