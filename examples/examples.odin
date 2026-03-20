@@ -117,12 +117,13 @@ main :: proc() {
 	}
 
 	for r in region {
-		buf: [64]byte
-		tz, _ := timezone.region_load(r)
-		fmt.printf("%-22s", sft.strftime(buf[:], "%r",  tz))
-		fmt.printf("%5s ", sft.strftime(buf[:], "%Z",  tz))
-		fmt.println(sft.strftime(buf[:], "%-z %F %I:%M:%S %P",  tz))
-		timezone.region_destroy(tz)
+		if tz, ok := timezone.region_load(r); ok {
+			buf: [64]byte
+			fmt.printf("%-22s", sft.strftime(buf[:], "%r",  tz))
+			fmt.printf("%5s ", sft.strftime(buf[:], "%Z",  tz))
+			fmt.println(sft.strftime(buf[:], "%-z %F %I:%M:%S %P",  tz))
+			timezone.region_destroy(tz)
+		}
 	}
 	fmt.println()
 }
