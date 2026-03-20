@@ -144,7 +144,7 @@ Example:
 	fmt.println(tm)
 
 */
-strftime_region :: proc(buf: []byte, format: string, tz: ^datetime.TZ_Region) -> (time_string: string, ok: bool) {
+strftime_region :: proc(buf: []byte, format: string, tz: ^datetime.TZ_Region) -> (time_string: string, ok: bool) #optional_ok {
 	now := time.time_to_datetime(time.now()) or_return
 	dt  := timezone.datetime_to_tz(now, tz) or_return
 	return strftime_datetime(buf[:], format, dt)
@@ -164,7 +164,7 @@ Example:
 	fmt.println(tm)
 
 */
-strftime_local :: proc(buf: []byte, format: string) -> (time_string: string, ok: bool) { 
+strftime_local :: proc(buf: []byte, format: string) -> (time_string: string, ok: bool) #optional_ok { 
 	tz := timezone.region_load("local", context.allocator) or_return
 	defer timezone.region_destroy(tz, context.allocator)
 	tm := time.time_to_datetime(time.now()) or_return
@@ -187,7 +187,7 @@ Example:
 	fmt.println(tm)
 
 */
-strftime_time :: proc(buf: []byte, format: string, t: time.Time) -> (time_string: string, ok: bool) {
+strftime_time :: proc(buf: []byte, format: string, t: time.Time) -> (time_string: string, ok: bool) #optional_ok {
 	dt := time.time_to_datetime(t) or_return
 	return strftime_datetime(buf[:], format, dt)
 }
@@ -213,7 +213,7 @@ Example:
 	fmt.println(ts)
 
 */
-strftime_datetime :: proc(buf: []byte, format: string, dt: datetime.DateTime) -> (time_string: string, ok: bool) {
+strftime_datetime :: proc(buf: []byte, format: string, dt: datetime.DateTime) -> (time_string: string, ok: bool) #optional_ok {
 	//	Internal buffer manager
 	add_to_buf :: proc(buf: []byte, new: []byte, idx: int, max: int) -> (next_idx: int, ok: bool) {
 		for n, i in new {
