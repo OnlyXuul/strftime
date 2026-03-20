@@ -26,11 +26,11 @@ main :: proc() {
 	defer timezone.region_destroy(tz)
 
 	buf: [128]byte
-	fmt.println(sft.strftime(buf[:], "%r %Z %-z", tz) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d %I:%M:%S %P", tz) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", tz) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", tz) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z", tz) or_else string(buf[:]))
+	fmt.println(sft.strftime(buf[:], "%r %Z %-z", tz))
+	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d %I:%M:%S %P", tz))
+	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", tz))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", tz))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z", tz))
 }
 	fmt.println()
 {
@@ -43,11 +43,11 @@ main :: proc() {
 	fmt.println()
 
 	buf: [128]byte
-	fmt.println(sft.strftime(buf[:], "%r %Z %-z") or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P") or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P") or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z") or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z") or_else string(buf[:]))
+	fmt.println(sft.strftime(buf[:], "%r %Z %-z"))
+	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P"))
+	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P"))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z"))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z"))
 }
 	fmt.println()
 {
@@ -68,11 +68,11 @@ main :: proc() {
 	dt, dt_ok := timezone.datetime_to_tz(tm, tz)
   
 	buf: [128]byte
-	fmt.println(sft.strftime(buf[:], "%r %Z %-z", dt) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P", dt) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", dt) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", dt) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z", dt) or_else string(buf[:]))
+	fmt.println(sft.strftime(buf[:], "%r %Z %-z", dt))
+	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P", dt))
+	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", dt))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", dt))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z", dt))
 }
 	fmt.println()
 {
@@ -87,42 +87,44 @@ main :: proc() {
 	tm := time.time_add(time.now(), -5 * time.Hour)
 
 	buf: [128]byte
-	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P", tm) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", tm) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", tm) or_else string(buf[:]))
-	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z", tm) or_else string(buf[:]))
+	fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P", tm))
+	fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", tm))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", tm))
+	fmt.println(sft.strftime(buf[:], "Timestamp in Microseconds %FT%T.%f%-z", tm))
 }
 	fmt.println()
 {
-	//	Taking a trip around the world and printing current date/time in different formats for each
-	fmt.println("Taking a trip around the world and printing current date/time in different formats for each")
+	//	Taking a trip around the world
+	fmt.println("Taking a trip around the world")
 	fmt.println()
 
-	tz: [8]^datetime.TZ_Region
-	ok: [8]bool
-
-	tz[0], ok[0] = timezone.region_load("America/New_York", context.allocator)
-	tz[1], ok[1] = timezone.region_load("America/Chicago", context.allocator)
-	tz[2], ok[2] = timezone.region_load("America/Los_Angeles", context.allocator)
-	tz[3], ok[3] = timezone.region_load("Asia/Tokyo", context.allocator)
-	tz[4], ok[4] = timezone.region_load("Asia/Hong_Kong", context.allocator)
-	tz[5], ok[5] = timezone.region_load("Europe/Moscow", context.allocator)
-	tz[6], ok[6] = timezone.region_load("Europe/Rome", context.allocator)
-	tz[7], ok[7] = timezone.region_load("Europe/London", context.allocator)
-
-	buf: [128]byte
-	for i :=0; i < 8 && ok[i]; i += 1 {
-		fmt.println(sft.strftime(buf[:], "%r %Z %-z", tz[i]) or_else string(buf[:]))
-		fmt.println(sft.strftime(buf[:], "%A %B %Y-%m-%d (24 Hour) %H:%M:%S (12 Hour) %I:%M:%S %P", tz[i]) or_else string(buf[:]))
-		fmt.println(sft.strftime(buf[:], "%a %b %-m/%-d/%-y (24 Hour) %-H:%-M:%-S (12 Hour) %-I:%-M:%-S %-P", tz[i]) or_else string(buf[:]))
-		fmt.println(sft.strftime(buf[:], "Timestamp in Milliseconds %FT%T.%-f%-z", tz[i]) or_else string(buf[:]))
-		fmt.println()
+	region := []string {
+		"Pacific/Fiji",
+		"Australia/Melbourne",
+		"Asia/Tokyo",
+		"Asia/Singapore",
+		"Asia/Taipei",
+		"Europe/Kyiv",
+		"Europe/Athens",
+		"Europe/Rome",
+		"Europe/Madrid",
+		"Europe/London",
+		"America/Guadeloupe",
+		"America/New_York",
+		"America/Chicago",
+		"America/Los_Angeles",
+		"Pacific/Honolulu",
 	}
 
-	for i :=0; i < 8; i += 1 {
-		timezone.region_destroy(tz[i], context.allocator)
+	for r in region {
+		buf: [64]byte
+		tz, _ := timezone.region_load(r)
+		fmt.printf("%-22s", sft.strftime(buf[:], "%r",  tz))
+		fmt.printf("%5s ", sft.strftime(buf[:], "%Z",  tz))
+		fmt.println(sft.strftime(buf[:], "%-z %F %I:%M:%S %P",  tz))
+		timezone.region_destroy(tz)
 	}
-
+	fmt.println()
 }
 
 }
