@@ -100,20 +100,28 @@ main :: proc() {
 
 	region := []string {
 		"Pacific/Fiji",
+		"Asia/Magadan",
 		"Australia/Melbourne",
 		"Asia/Tokyo",
 		"Asia/Singapore",
-		"Asia/Taipei",
+		"Asia/Bangkok",
+		"Asia/Dhaka",
+		"Asia/Karachi",
+		"Asia/Dubai",
+		"Europe/Moscow",
 		"Europe/Kyiv",
-		"Europe/Athens",
 		"Europe/Rome",
-		"Europe/Madrid",
 		"Europe/London",
-		"America/Guadeloupe",
+		"Atlantic/Azores",
+		"Atlantic/South_Georgia",
+		"America/Montevideo",
+		"America/Santiago",
 		"America/New_York",
 		"America/Chicago",
+		"America/Denver",
 		"America/Los_Angeles",
 		"Pacific/Honolulu",
+		"Pacific/Samoa",
 	}
 
 	for r in region {
