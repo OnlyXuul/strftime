@@ -32,12 +32,12 @@ import "core:time/timezone"
 @(rodata)
 weekday := [7][]byte {
 	{'S','u','n','d','a','y'},
-  {'M','o','n','d','a','y'},
-  {'T','u','e','s','d','a','y'},
-  {'W','e','d','n','e','s','d','a','y'},
-  {'T','h','u','r','s','d','a','y'},
-  {'F','r','i','d','a','y'},
-  {'S','a','t','u','r','d','a','y'},
+	{'M','o','n','d','a','y'},
+	{'T','u','e','s','d','a','y'},
+	{'W','e','d','n','e','s','d','a','y'},
+	{'T','h','u','r','s','d','a','y'},
+	{'F','r','i','d','a','y'},
+	{'S','a','t','u','r','d','a','y'},
 }
 
 @(rodata)
@@ -225,7 +225,7 @@ strftime_datetime :: proc(buf: []byte, format: string, dt: datetime.DateTime) ->
 	}
 
 	//	Internal string to bytes shortcut
-	tobytes :: proc(s: string) -> []byte {	return transmute([]byte)(s) }
+	tobytes :: proc(s: string) -> []byte { return transmute([]byte)(s) }
 
 	//	Validate
 	if datetime.validate_datetime(dt) != nil { return }
@@ -242,21 +242,21 @@ strftime_datetime :: proc(buf: []byte, format: string, dt: datetime.DateTime) ->
 		if format[i] == '%' && i+1 <= format_length {
 			switch format[i+1] {
 			//	** Special **
-			case '%': i += 1 // escape percent
+			case '%': i += 1
 				idx = add_to_buf(buf, {'%'}, idx, max) or_return
-			case 'c': i += 1 // Date and time representation - Sun Mar 08 14:30:00 2026
+			case 'c': i += 1
 				thisbuf: [24]byte
 				_ = strftime(thisbuf[:], "%a %b %d %H:%M:%S %Y", dt) or_return
 				idx = add_to_buf(buf, thisbuf[:], idx, max) or_return
-			case 'D': i += 1 // equivalent to "%m/%d/%y"
+			case 'D': i += 1
 				thisbuf: [8]byte
 				_ = strftime(thisbuf[:], "%m/%d/%y", dt) or_return
 				idx = add_to_buf(buf, thisbuf[:], idx, max) or_return
-			case 'F': i += 1 // equivalent to "%Y-%m-%d"
+			case 'F': i += 1
 				thisbuf: [10]byte
 				_ = strftime(thisbuf[:], "%Y-%m-%d", dt) or_return
 				idx = add_to_buf(buf, thisbuf[:], idx, max) or_return
-			case 'R': i += 1 // equivalent to "%H:%M"
+			case 'R': i += 1
 				thisbuf: [6]byte
 				_ = strftime(thisbuf[:], "%H:%M", dt) or_return
 				idx = add_to_buf(buf, thisbuf[:], idx, max) or_return
@@ -270,7 +270,7 @@ strftime_datetime :: proc(buf: []byte, format: string, dt: datetime.DateTime) ->
 					_ = strftime(thisbuf[:], "%FT%T.%fZ", dt) or_return
 					idx = add_to_buf(buf, thisbuf[:], idx, max) or_return
 				}
-			case 'T': i += 1 // equivalent to "%H:%M:%S"
+			case 'T': i += 1
 				thisbuf: [8]byte
 				_ = strftime(thisbuf[:], "%H:%M:%S", dt) or_return
 				idx = add_to_buf(buf, thisbuf[:], idx, max) or_return
